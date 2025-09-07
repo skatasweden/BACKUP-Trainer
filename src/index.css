@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Fitness App Dark Theme */
+    --background: 222 25% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 222 25% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 222 25% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 212 100% 55%;
+    --primary-foreground: 210 20% 95%;
+    --primary-glow: 212 100% 65%;
+
+    --secondary: 222 25% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 222 25% 12%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 212 80% 45%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 222 25% 18%;
+    --input: 222 25% 15%;
+    --ring: 212 100% 55%;
+
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(222 25% 12%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(212 80% 55%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 4px 20px hsl(222 25% 5% / 0.4);
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-semibold px-6 py-3 rounded-lg;
+    @apply hover:shadow-lg hover:scale-105 transition-all duration-300;
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground border border-border;
+    @apply hover:bg-secondary/80 transition-colors duration-200;
+  }
+  
+  /* Card Components - Optimized for performance */
+  .card-elevated {
+    @apply bg-card border border-border rounded-xl shadow-sm;
+    will-change: box-shadow;
+    transition: box-shadow 0.2s ease-out;
+  }
+  
+  .card-elevated:hover {
+    @apply shadow-md;
+  }
+  
+  /* Animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px hsl(var(--primary) / 0.2);
+    }
+    to {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+    }
+  }
+}
